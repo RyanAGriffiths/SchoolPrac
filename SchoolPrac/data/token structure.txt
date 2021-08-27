@@ -1,0 +1,24 @@
+Token structure: firstname@surname#username#password#email
+
+(the first token is complex token using the delimiter "@")
+Example 1:
+
+firstname = Ryan
+surname = Griffiths
+username = RyanIsAwesome
+password = HesNotThatAwesome
+email = JustKiddingHesAwesome@TotallyAwesome.com
+
+line: Ryan@Griffiths#RyanIsAwesome#HesNotThatAwesome#JustKiddingHesAwesome@TotallyAwesome.com
+
+
+Example 2 (slightly easier to read):
+
+
+firstname = Clifton
+surname = Bartholomew
+username = ClifB
+password = 123
+email = Clif@B.com
+
+line: Clifton @ Bartholomew # ClifB # 123 # Clif@B.com (disregard spaces)
