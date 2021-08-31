@@ -1,29 +1,41 @@
 package ObjectArrays;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Friend {
 
     private String name;
-    private int age;
+    private Date dob;
 
-    public Friend(String n, int a) {
+    public Friend(String n, String d) {
         name = n;
-        age = a;
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        try
+        {
+            dob = s.parse(d);
+        } catch (ParseException ex)
+        {
+            System.out.println("uh oh...");
+        }
+        
     }
-
+    
+    
     public String getName() {
         return name;
     }
 
     public int getAge() {
-        return age;
+        Date today = new Date();
+        return today.getYear() - this.dob.getYear();
     }
 
     public void setName(String n) {
         name = n;
-    }
-
-    public void setAge(int a) {
-        age = a;
     }
 
     public int compareTo(Friend b){
@@ -32,6 +44,6 @@ public class Friend {
     }
 
     public String toString() {
-        return name + " " + age;
+        return name + " " + dob.toString();
     }
 }
