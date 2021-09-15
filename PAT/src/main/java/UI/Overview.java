@@ -35,26 +35,27 @@ public class Overview extends javax.swing.JFrame
     {
 
         welcomeLabel = new javax.swing.JLabel();
-        LineupsButton = new javax.swing.JButton();
+        PlayerManagerButton = new javax.swing.JButton();
         practiceButton1 = new javax.swing.JButton();
-        MatchesButton = new javax.swing.JButton();
-        manageTeamButton = new javax.swing.JButton();
-        logMatchesButton = new javax.swing.JButton();
-        logPracticeButton = new javax.swing.JButton();
+        ViewMatchesButton = new javax.swing.JButton();
+        TeamManagerButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         playerList = new javax.swing.JList<>();
         logoutButton = new javax.swing.JButton();
+        overviewLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 400));
+        setSize(new java.awt.Dimension(500, 340));
 
         welcomeLabel.setText("Hey, user ;)");
 
-        LineupsButton.setText("Lineups");
-        LineupsButton.addActionListener(new java.awt.event.ActionListener()
+        PlayerManagerButton.setText("Player Manager");
+        PlayerManagerButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                LineupsButtonActionPerformed(evt);
+                PlayerManagerButtonActionPerformed(evt);
             }
         });
 
@@ -67,39 +68,21 @@ public class Overview extends javax.swing.JFrame
             }
         });
 
-        MatchesButton.setText("Matches");
-        MatchesButton.addActionListener(new java.awt.event.ActionListener()
+        ViewMatchesButton.setText("View Matches");
+        ViewMatchesButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                MatchesButtonActionPerformed(evt);
+                ViewMatchesButtonActionPerformed(evt);
             }
         });
 
-        manageTeamButton.setText("Manage Team");
-        manageTeamButton.addActionListener(new java.awt.event.ActionListener()
+        TeamManagerButton.setText("Team Manager");
+        TeamManagerButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                manageTeamButtonActionPerformed(evt);
-            }
-        });
-
-        logMatchesButton.setText("Log Matches");
-        logMatchesButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                logMatchesButtonActionPerformed(evt);
-            }
-        });
-
-        logPracticeButton.setText("Log Practice");
-        logPracticeButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                logPracticeButtonActionPerformed(evt);
+                TeamManagerButtonActionPerformed(evt);
             }
         });
 
@@ -120,53 +103,60 @@ public class Overview extends javax.swing.JFrame
             }
         });
 
+        overviewLabel.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        overviewLabel.setText("OVERVIEW");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(welcomeLabel))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logoutButton)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(practiceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(MatchesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LineupsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(PlayerManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(logMatchesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(manageTeamButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(logPracticeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TeamManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ViewMatchesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(overviewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(welcomeLabel))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutButton)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(welcomeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(welcomeLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(overviewLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(practiceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(logPracticeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ViewMatchesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LineupsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(manageTeamButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(MatchesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(logMatchesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                            .addComponent(PlayerManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TeamManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(logoutButton)
-                .addGap(17, 17, 17))
+                .addContainerGap())
         );
 
         pack();
@@ -178,35 +168,23 @@ public class Overview extends javax.swing.JFrame
         dispose();
     }//GEN-LAST:event_practiceButton1ActionPerformed
 
-    private void logPracticeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_logPracticeButtonActionPerformed
-    {//GEN-HEADEREND:event_logPracticeButtonActionPerformed
-        new LogPractice().setVisible(true);
+    private void PlayerManagerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_PlayerManagerButtonActionPerformed
+    {//GEN-HEADEREND:event_PlayerManagerButtonActionPerformed
+        new PlayerManager().setVisible(true);
         dispose();
-    }//GEN-LAST:event_logPracticeButtonActionPerformed
+    }//GEN-LAST:event_PlayerManagerButtonActionPerformed
 
-    private void LineupsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_LineupsButtonActionPerformed
-    {//GEN-HEADEREND:event_LineupsButtonActionPerformed
-        new Lineups().setVisible(true);
+    private void TeamManagerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_TeamManagerButtonActionPerformed
+    {//GEN-HEADEREND:event_TeamManagerButtonActionPerformed
+        new TeamManager().setVisible(true);
         dispose();
-    }//GEN-LAST:event_LineupsButtonActionPerformed
+    }//GEN-LAST:event_TeamManagerButtonActionPerformed
 
-    private void manageTeamButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_manageTeamButtonActionPerformed
-    {//GEN-HEADEREND:event_manageTeamButtonActionPerformed
-        new ManageTeam().setVisible(true);
+    private void ViewMatchesButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewMatchesButtonActionPerformed
+    {//GEN-HEADEREND:event_ViewMatchesButtonActionPerformed
+        new ViewMatches().setVisible(true);
         dispose();
-    }//GEN-LAST:event_manageTeamButtonActionPerformed
-
-    private void MatchesButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MatchesButtonActionPerformed
-    {//GEN-HEADEREND:event_MatchesButtonActionPerformed
-        new Matches().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_MatchesButtonActionPerformed
-
-    private void logMatchesButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_logMatchesButtonActionPerformed
-    {//GEN-HEADEREND:event_logMatchesButtonActionPerformed
-        new LogMatch().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_logMatchesButtonActionPerformed
+    }//GEN-LAST:event_ViewMatchesButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_logoutButtonActionPerformed
     {//GEN-HEADEREND:event_logoutButtonActionPerformed
@@ -261,13 +239,12 @@ public class Overview extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LineupsButton;
-    private javax.swing.JButton MatchesButton;
+    private javax.swing.JButton PlayerManagerButton;
+    private javax.swing.JButton TeamManagerButton;
+    private javax.swing.JButton ViewMatchesButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton logMatchesButton;
-    private javax.swing.JButton logPracticeButton;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JButton manageTeamButton;
+    private javax.swing.JLabel overviewLabel;
     private javax.swing.JList<String> playerList;
     private javax.swing.JButton practiceButton1;
     private javax.swing.JLabel welcomeLabel;

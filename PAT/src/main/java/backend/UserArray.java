@@ -16,7 +16,9 @@ public class UserArray
     {
 
     }
-
+//practice, practice array
+    //matches, matches array
+    //
     public boolean checkUser(String email, String password)
     {
         for (int i = 0; i < size - 1; i++)
@@ -66,7 +68,7 @@ public class UserArray
     }
 
     //adduser - add to array, print array to txt
-    public void register(String email, String password)
+    public void registerUser(String email, String password)
     {
         this.shiftRight(size - 1);
         userArr[size - 1] = new User(email, password);
@@ -74,6 +76,7 @@ public class UserArray
     }
 
    
+
     //deleteUser - delete from array, print array to txt
     //binarySearch
     //getUser

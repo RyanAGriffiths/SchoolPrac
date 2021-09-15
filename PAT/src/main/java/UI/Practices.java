@@ -13,7 +13,7 @@ public class Practices extends javax.swing.JFrame
 {
 
     /**
-     Creates new form practices
+     Creates new form matches
      */
     public Practices()
     {
@@ -30,14 +30,30 @@ public class Practices extends javax.swing.JFrame
     private void initComponents()
     {
 
-        backButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         practiceList = new javax.swing.JList<>();
-        logPracticeButton = new javax.swing.JButton();
-        deleteButton = new javax.swing.JButton();
-        addButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+        addPracticeButton = new javax.swing.JButton();
+        deletePracticeButton = new javax.swing.JButton();
+        addPracticeTextField = new javax.swing.JTextField();
+        exampleLabel = new javax.swing.JLabel();
+        deletePracticeTextField1 = new javax.swing.JTextField();
+        example2Label = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        practiceList.setModel(new javax.swing.AbstractListModel<String>()
+        {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(practiceList);
 
         backButton.setText("back");
         backButton.addActionListener(new java.awt.event.ActionListener()
@@ -48,71 +64,117 @@ public class Practices extends javax.swing.JFrame
             }
         });
 
-        practiceList.setModel(new javax.swing.AbstractListModel<String>()
-        {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(practiceList);
-
-        logPracticeButton.setText("log practice");
-        logPracticeButton.addActionListener(new java.awt.event.ActionListener()
+        addPracticeButton.setText("add practice");
+        addPracticeButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                logPracticeButtonActionPerformed(evt);
+                addPracticeButtonActionPerformed(evt);
             }
         });
 
-        deleteButton.setText("delete");
-        deleteButton.addActionListener(new java.awt.event.ActionListener()
+        deletePracticeButton.setText("delete practice");
+        deletePracticeButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                deleteButtonActionPerformed(evt);
+                deletePracticeButtonActionPerformed(evt);
             }
         });
 
-        addButton.setText("add");
-        addButton.addActionListener(new java.awt.event.ActionListener()
+        addPracticeTextField.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                addButtonActionPerformed(evt);
+                addPracticeTextFieldActionPerformed(evt);
             }
         });
+
+        exampleLabel.setForeground(new java.awt.Color(153, 153, 153));
+        exampleLabel.setText("e.g. 1 October 15:00-16:00 ");
+
+        example2Label.setForeground(new java.awt.Color(153, 153, 153));
+        example2Label.setText("e.g. 1 October 15:00-16:00");
+        example2Label.setOpaque(true);
+
+        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("PRACTICES");
+        jLabel1.setFocusable(false);
+
+        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("LOG");
+        jLabel3.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(backButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logPracticeButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                        .addComponent(addButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteButton)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(113, 113, 113)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(deletePracticeButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(addPracticeButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(example2Label)
+                                    .addComponent(exampleLabel))
+                                .addGap(0, 82, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(deletePracticeTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(addPracticeTextField, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(backButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
-                    .addComponent(logPracticeButton)
-                    .addComponent(deleteButton)
-                    .addComponent(addButton))
-                .addGap(22, 22, 22))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(35, 35, 35)
+                        .addComponent(exampleLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addPracticeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addPracticeButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(example2Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deletePracticeTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deletePracticeButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addContainerGap())
         );
 
         pack();
@@ -124,21 +186,20 @@ public class Practices extends javax.swing.JFrame
         dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void logPracticeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_logPracticeButtonActionPerformed
-    {//GEN-HEADEREND:event_logPracticeButtonActionPerformed
-        new LogPractice().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_logPracticeButtonActionPerformed
-
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deleteButtonActionPerformed
-    {//GEN-HEADEREND:event_deleteButtonActionPerformed
+    private void addPracticeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addPracticeButtonActionPerformed
+    {//GEN-HEADEREND:event_addPracticeButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_deleteButtonActionPerformed
+    }//GEN-LAST:event_addPracticeButtonActionPerformed
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addButtonActionPerformed
-    {//GEN-HEADEREND:event_addButtonActionPerformed
+    private void deletePracticeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deletePracticeButtonActionPerformed
+    {//GEN-HEADEREND:event_deletePracticeButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
+    }//GEN-LAST:event_deletePracticeButtonActionPerformed
+
+    private void addPracticeTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addPracticeTextFieldActionPerformed
+    {//GEN-HEADEREND:event_addPracticeTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addPracticeTextFieldActionPerformed
 
     /**
      @param args the command line arguments
@@ -175,6 +236,12 @@ public class Practices extends javax.swing.JFrame
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
@@ -187,11 +254,17 @@ public class Practices extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
+    private javax.swing.JButton addPracticeButton;
+    private javax.swing.JTextField addPracticeTextField;
     private javax.swing.JButton backButton;
-    private javax.swing.JButton deleteButton;
+    private javax.swing.JButton deletePracticeButton;
+    private javax.swing.JTextField deletePracticeTextField1;
+    private javax.swing.JLabel example2Label;
+    private javax.swing.JLabel exampleLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton logPracticeButton;
     private javax.swing.JList<String> practiceList;
     // End of variables declaration//GEN-END:variables
 }

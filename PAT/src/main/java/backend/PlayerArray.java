@@ -94,18 +94,40 @@ public class PlayerArray
         }
     }
 
+    public void sortPlayer()
+    {
+        for (int currentIndex = size - 1; currentIndex >= 0; currentIndex--)
+        {
+            for (int i = 0; i < currentIndex; i++)
+            {
+                if(plArr[i].getName().compareTo(plArr[i+1].getName()) > 0){
+                    
+                    Player temp = plArr[i+1];
+                    plArr[i+1] = plArr[i];
+                    plArr[i] = temp;
+                }
+            }
+        }
+    }
+
     public void addPlayer(int age, String name, String position)
     {
         this.shiftRight(size - 1);
         plArr[size - 1] = new Player(age, name, position);
+        this.sortPlayer(); //ask sir lol
         this.print();
     }
 
-    public void delete(String name)
+    public void deletePlayer(String name)
     {
-        for (int i = 0; i < size; i++)
+        int index = binarySearch(name);
+        if (index > 0)
         {
-            plArr[]
+            shiftLeft(index);
+        } else
+        {
+            System.out.println("This player does not exsist");
         }
     }
+
 }
