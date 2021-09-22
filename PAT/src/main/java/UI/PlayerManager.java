@@ -5,6 +5,9 @@
  */
 package UI;
 
+import backend.PlayerArray;
+import javax.swing.DefaultListModel;
+
 /**
 
  @author Ryang
@@ -18,6 +21,18 @@ public class PlayerManager extends javax.swing.JFrame
     public PlayerManager()
     {
         initComponents();
+        
+        PlayerArray p = new PlayerArray();
+        String[] players = p.playerInStringForm();
+        
+        DefaultListModel<String> model = new DefaultListModel<String>();
+        
+        //for every element in player, adds to list
+        for (String player : players)
+        {
+            model.addElement(player);
+        }
+        lineupList.setModel(model);
     }
 
     /**
@@ -30,9 +45,26 @@ public class PlayerManager extends javax.swing.JFrame
     private void initComponents()
     {
 
+        overviewLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lineupList = new javax.swing.JList<>();
         backButton = new javax.swing.JButton();
+        ManagerLabel = new javax.swing.JLabel();
+        PlayerLabel = new javax.swing.JLabel();
+        addPlayerTextField = new javax.swing.JTextField();
+        addPlayerButton = new javax.swing.JButton();
+        nameLabel = new javax.swing.JLabel();
+        ageTextField = new javax.swing.JTextField();
+        ageLabel = new javax.swing.JLabel();
+        positionTextField = new javax.swing.JTextField();
+        positionLabel = new javax.swing.JLabel();
+        deleteButton = new javax.swing.JButton();
+        sortAlphabeticallyButton = new javax.swing.JButton();
+        sortByPositionButton = new javax.swing.JButton();
+        sortByAgeButton = new javax.swing.JButton();
+
+        overviewLabel.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        overviewLabel.setText("TEAM MANAGER");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,25 +85,101 @@ public class PlayerManager extends javax.swing.JFrame
             }
         });
 
+        ManagerLabel.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        ManagerLabel.setText("MANAGER");
+
+        PlayerLabel.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        PlayerLabel.setText("PLAYER");
+
+        addPlayerButton.setText("add");
+
+        nameLabel.setText("name:");
+
+        ageLabel.setText("age:");
+
+        positionLabel.setText("position:");
+
+        deleteButton.setText("delete");
+
+        sortAlphabeticallyButton.setText("sort A-Z");
+
+        sortByPositionButton.setText("sort by position");
+
+        sortByAgeButton.setText("sort by age");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backButton))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PlayerLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ManagerLabel)
+                                    .addComponent(addPlayerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nameLabel)
+                                    .addComponent(ageLabel)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(positionLabel)
+                                            .addComponent(positionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(addPlayerButton, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addGap(16, 16, 16)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(sortAlphabeticallyButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(sortByPositionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                                    .addComponent(sortByAgeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(backButton)
-                .addGap(22, 22, 22))
+                .addGap(10, 10, 10))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PlayerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ManagerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addPlayerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ageLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(positionLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(positionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addPlayerButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(sortAlphabeticallyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(sortByPositionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(sortByAgeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,8 +244,22 @@ public class PlayerManager extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ManagerLabel;
+    private javax.swing.JLabel PlayerLabel;
+    private javax.swing.JButton addPlayerButton;
+    private javax.swing.JTextField addPlayerTextField;
+    private javax.swing.JLabel ageLabel;
+    private javax.swing.JTextField ageTextField;
     private javax.swing.JButton backButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> lineupList;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel overviewLabel;
+    private javax.swing.JLabel positionLabel;
+    private javax.swing.JTextField positionTextField;
+    private javax.swing.JButton sortAlphabeticallyButton;
+    private javax.swing.JButton sortByAgeButton;
+    private javax.swing.JButton sortByPositionButton;
     // End of variables declaration//GEN-END:variables
 }

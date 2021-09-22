@@ -13,11 +13,11 @@ public class User
     private String password;
     private String email;
 
-    public User(String password, String email)
+    public User(String email, String password)
     {
 
-        this.password = password;
         this.email = email;
+        this.password = password;
 
     }
 
@@ -41,7 +41,6 @@ public class User
         this.password = password;
     }
 
-
     public boolean checkPassword(String n)
     {
 
@@ -54,9 +53,9 @@ public class User
         return this.email.equals(n);
     }
 
-    public void sendEmail(String email)
+    public String toString()
     {
-
+        return email + "#" + password;
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package UI;
 
+import backend.UserArray;
 import backend.User;
 
 /**
@@ -34,7 +35,6 @@ public class Overview extends javax.swing.JFrame
     private void initComponents()
     {
 
-        welcomeLabel = new javax.swing.JLabel();
         PlayerManagerButton = new javax.swing.JButton();
         practiceButton1 = new javax.swing.JButton();
         ViewMatchesButton = new javax.swing.JButton();
@@ -47,8 +47,6 @@ public class Overview extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(500, 400));
         setSize(new java.awt.Dimension(500, 340));
-
-        welcomeLabel.setText("Hey, user ;)");
 
         PlayerManagerButton.setText("Player Manager");
         PlayerManagerButton.addActionListener(new java.awt.event.ActionListener()
@@ -123,11 +121,10 @@ public class Overview extends javax.swing.JFrame
                             .addComponent(ViewMatchesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(overviewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(welcomeLabel))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutButton)
@@ -136,13 +133,8 @@ public class Overview extends javax.swing.JFrame
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(welcomeLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(overviewLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(overviewLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -164,7 +156,7 @@ public class Overview extends javax.swing.JFrame
 
     private void practiceButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_practiceButton1ActionPerformed
     {//GEN-HEADEREND:event_practiceButton1ActionPerformed
-        new Practices().setVisible(true);
+        new LogPractice().setVisible(true);
         dispose();
     }//GEN-LAST:event_practiceButton1ActionPerformed
 
@@ -176,13 +168,13 @@ public class Overview extends javax.swing.JFrame
 
     private void TeamManagerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_TeamManagerButtonActionPerformed
     {//GEN-HEADEREND:event_TeamManagerButtonActionPerformed
-        new TeamManager().setVisible(true);
+        new ViewMatches().setVisible(true);
         dispose();
     }//GEN-LAST:event_TeamManagerButtonActionPerformed
 
     private void ViewMatchesButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewMatchesButtonActionPerformed
     {//GEN-HEADEREND:event_ViewMatchesButtonActionPerformed
-        new ViewMatches().setVisible(true);
+        new LogMatches().setVisible(true);
         dispose();
     }//GEN-LAST:event_ViewMatchesButtonActionPerformed
 
@@ -247,6 +239,5 @@ public class Overview extends javax.swing.JFrame
     private javax.swing.JLabel overviewLabel;
     private javax.swing.JList<String> playerList;
     private javax.swing.JButton practiceButton1;
-    private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

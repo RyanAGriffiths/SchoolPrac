@@ -11,8 +11,11 @@ package backend;
  */
 public class Test
 {
+
     public static void main(String[] args)
     {
-        PlayerArray p = new PlayerArray();
+        UserArray p = new UserArray();
+        System.out.println(p.toString());
+        System.out.println(p.checkUser("ryanG@gmail.com", "12345"));
     }
 }

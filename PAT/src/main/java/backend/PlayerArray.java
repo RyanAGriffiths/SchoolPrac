@@ -76,13 +76,13 @@ public class PlayerArray
         }
     }
 
-    public void print()
+    public void printToFile()
     {
 
         try
         {
 
-            PrintWriter pw = new PrintWriter(new File("data\\userData.txt"));
+            PrintWriter pw = new PrintWriter(new File("data\\playerData.txt"));
             for (int i = 0; i < size; i++)
             {
                 pw.println(plArr[i]);
@@ -100,10 +100,11 @@ public class PlayerArray
         {
             for (int i = 0; i < currentIndex; i++)
             {
-                if(plArr[i].getName().compareTo(plArr[i+1].getName()) > 0){
-                    
-                    Player temp = plArr[i+1];
-                    plArr[i+1] = plArr[i];
+                if (plArr[i].getName().compareTo(plArr[i + 1].getName()) > 0)
+                {
+
+                    Player temp = plArr[i + 1];
+                    plArr[i + 1] = plArr[i];
                     plArr[i] = temp;
                 }
             }
@@ -114,8 +115,8 @@ public class PlayerArray
     {
         this.shiftRight(size - 1);
         plArr[size - 1] = new Player(age, name, position);
-        this.sortPlayer(); //ask sir lol
-        this.print();
+        this.sortPlayer();
+        this.printToFile();
     }
 
     public void deletePlayer(String name)
@@ -130,4 +131,13 @@ public class PlayerArray
         }
     }
 
+    public String[] playerInStringForm()
+    {
+        String[] players = new String[150];
+        for (int i = 0; i < size - 1; i++)
+        {
+            players[i] = plArr[i].getName();
+        }
+        return players;
+    }
 }

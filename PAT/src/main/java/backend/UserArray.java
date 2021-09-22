@@ -3,6 +3,7 @@ package backend;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,14 +15,35 @@ public class UserArray
 
     public UserArray()
     {
+        try
+        {
 
+            Scanner sc = new Scanner(new File("C:\\Users\\Ryang\\Documents\\NetBeansProjects\\PAT\\data\\userData.txt"));
+            while (sc.hasNext())
+            {
+                String line = sc.nextLine();
+                Scanner lsc = new Scanner(line).useDelimiter("#");
+
+                String email = lsc.next();
+                String password = lsc.next();
+
+                User u = new User(email, password);
+                userArr[size] = u;
+                size++;
+                lsc.close();
+            }
+            sc.close();
+        } catch (FileNotFoundException ex)
+        {
+            System.out.println("The user's data file was not found");
+        }
     }
-//practice, practice array
+    //practice, practice array
     //matches, matches array
-    //
+
     public boolean checkUser(String email, String password)
     {
-        for (int i = 0; i < size - 1; i++)
+        for (int i = 0; i < size; i++)
         {
             if (userArr[i].getEmail().equals(email))
             {
@@ -43,18 +65,17 @@ public class UserArray
     public void shiftRight(int index)
     {
         size++;
-        for (int i = size - 1; i > index - 1; i--)
+        for (int i = userArr.length-1; i > index; i--)
         {
             userArr[i] = userArr[i - 1];
         }
+        System.out.println("");
     }
 
-    public void print()
+    public void printToFile()
     {
-
         try
         {
-
             PrintWriter pw = new PrintWriter(new File("data\\userData.txt"));
             for (int i = 0; i < size; i++)
             {
@@ -70,12 +91,21 @@ public class UserArray
     //adduser - add to array, print array to txt
     public void registerUser(String email, String password)
     {
-        this.shiftRight(size - 1);
-        userArr[size - 1] = new User(email, password);
-        this.print();
+       
+        userArr[size] = new User(email, password);
+        size++;
+        printToFile();
     }
 
-   
+    public String toString()
+    {
+        String output = "";
+        for (int i = 0; i < size; i++)
+        {
+            output += userArr[i] + "\n";
+        }
+        return output;
+    }
 
     //deleteUser - delete from array, print array to txt
     //binarySearch

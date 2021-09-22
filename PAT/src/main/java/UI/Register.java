@@ -1,4 +1,5 @@
 package UI;
+import backend.UserArray;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -133,13 +134,19 @@ public class Register extends javax.swing.JFrame
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cancelButtonActionPerformed
     {//GEN-HEADEREND:event_cancelButtonActionPerformed
+        new Login().setVisible(true);
         dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_registerButtonActionPerformed
     {//GEN-HEADEREND:event_registerButtonActionPerformed
+        String email = emailTextField.getText();
+        String password = passwordTextField.getText();
         
-        new Overview().setVisible(true);
+        UserArray u = new UserArray();
+        u.registerUser(email, password);
+        
+        new Login().setVisible(true);
         dispose();
     }//GEN-LAST:event_registerButtonActionPerformed
 

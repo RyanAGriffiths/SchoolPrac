@@ -52,7 +52,7 @@ public class Player {
         return position;
     }
 
-    public void setPosition(String email) {
+    public void setPosition(String position) {
         this.position = position;
     }  
 }

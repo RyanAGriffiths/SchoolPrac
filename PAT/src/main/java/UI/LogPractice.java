@@ -9,13 +9,13 @@ package UI;
 
  @author Ryang
  */
-public class Practices extends javax.swing.JFrame
+public class LogPractice extends javax.swing.JFrame
 {
 
     /**
      Creates new form matches
      */
-    public Practices()
+    public LogPractice()
     {
         initComponents();
     }
@@ -114,13 +114,10 @@ public class Practices extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel1)))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -223,17 +220,25 @@ public class Practices extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(Practices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogPractice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(Practices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogPractice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(Practices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogPractice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(Practices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogPractice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -248,7 +253,7 @@ public class Practices extends javax.swing.JFrame
         {
             public void run()
             {
-                new Practices().setVisible(true);
+                new LogPractice().setVisible(true);
             }
         });
     }
