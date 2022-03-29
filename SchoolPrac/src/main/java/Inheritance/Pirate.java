@@ -51,7 +51,7 @@ public class Pirate
 
     public String getName()
     {
-        return firstname + " " + surname.substring(0, 1) + ".";
+        return surname + " " + firstname.substring(0, 1) + ".";
     }
 
     public double grogToMilli()
