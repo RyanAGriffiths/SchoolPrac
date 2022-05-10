@@ -4,6 +4,7 @@
  */
 package DVTTwo;
 
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -118,27 +119,32 @@ public class MainMenu extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ageSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(medicalAidComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(89, 89, 89)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel9))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ageSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(medicalAidComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(submitButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cancelButton)))))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(94, 94, 94)
@@ -176,12 +182,12 @@ public class MainMenu extends javax.swing.JFrame
                     .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(errorLabel)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cancelButton)
                     .addComponent(submitButton))
-                .addGap(30, 30, 30)
-                .addComponent(errorLabel)
-                .addGap(47, 47, 47))
+                .addGap(59, 59, 59))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -212,45 +218,34 @@ public class MainMenu extends javax.swing.JFrame
         int age = (int) ageSpinner.getValue();
         String date_str = dateTextField.getText();
         boolean successfulDateConversion = true;
-
-        //Presence checks
-        //date use try catch and catch error and set label 
-        if (nameTextField.getText().isEmpty())
+        
+        //Age and ID check using Date Object
+        try
         {
-            errorLabel.setText("Please enter a name");
-        } else if (surnameTextField.getText().isEmpty())
-        {
-            errorLabel.setText("Please enter a surname");
-        } else if (idTextField.getText().isEmpty())
-        {
-            errorLabel.setText("Please enter an ID");
-        }else if (!Appointment.containsOnlyLetters(name))
-        {
-            errorLabel.setText("Please enter a valid name");
-        } else if (!Appointment.containsOnlyLetters(surname))
-        {
-            errorLabel.setText("Please enter a valid surname");
-        } else if (!Appointment.containsOnlyDigits(id) && id.length() != 13)
+            try
+            {
+                String idAge = id.substring(0, 6);
+                DateTimeFormatter birthDateFormatter = DateTimeFormatter.ofPattern("yyMMdd");
+                LocalDate bday = LocalDate.parse(idAge, birthDateFormatter);
+                LocalDate now = LocalDate.now();
+                Period diff = Period.between(bday, now);
+                if (diff.getYears() != age)
+                {
+                    errorLabel.setText("Age does not match ID");
+                    System.out.println("bday" + bday);
+                    successfulDateConversion = false;
+                }
+            } catch (StringIndexOutOfBoundsException e)
+            {
+                errorLabel.setText("Please enter a valid ID number");
+                successfulDateConversion = false;
+            }
+        } catch (DateTimeParseException e)
         {
             errorLabel.setText("Please enter a valid ID");
+            successfulDateConversion = false;
         }
         
-        else if(successfulDateConversion){
-            
-        }
-
-        String idAge = id.substring(0, 6);
-        DateTimeFormatter birthDateFormatter = DateTimeFormatter.ofPattern("yyMMdd");
-        LocalDate bday = LocalDate.parse(idAge, birthDateFormatter);
-        LocalDate now = LocalDate.now();
-        Period diff = Period.between(bday, now);
-        if (diff.getYears() != age)
-        {
-            errorLabel.setText("Age does not match ID");
-        }
-
-//        System.out.println(idAge);
-//        LocalDate localDate = LocalDate.parse(idAge);
         try
         {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -259,19 +254,48 @@ public class MainMenu extends javax.swing.JFrame
             if (localDate1.isBefore(LocalDate.now()))
             {
                 errorLabel.setText("Please enter a valid date");
+                successfulDateConversion = false;
             }
         } catch (DateTimeParseException e)
         {
             errorLabel.setText("Please enter a valid date format");
-            e.printStackTrace();
+            successfulDateConversion = false;
         }
-            
-        //check age matches id
-        //checkSurname
-        //checkID
-        //checkGender
-        //checkAge
-        //checkDate
+
+        //Presence checks
+        if (nameTextField.getText().isEmpty())
+        {
+            errorLabel.setText("Please enter a name");
+            successfulDateConversion = false;
+        } else if (surnameTextField.getText().isEmpty())
+        {
+            errorLabel.setText("Please enter a surname");
+            successfulDateConversion = false;
+        } else if (idTextField.getText().isEmpty())
+        {
+            errorLabel.setText("Please enter an ID");
+            successfulDateConversion = false;
+        } 
+        //Type checks
+        else if (!Appointment.containsOnlyLetters(name))
+        {
+            errorLabel.setText("Please enter a valid name");
+            successfulDateConversion = false;
+        } else if (!Appointment.containsOnlyLetters(surname))
+        {
+            errorLabel.setText("Please enter a valid surname");
+            successfulDateConversion = false;
+        } 
+        //Length check
+        else if (!Appointment.containsOnlyDigits(id) && id.length() != 13)
+        {
+            errorLabel.setText("Please enter a valid ID");
+            successfulDateConversion = false;
+        } else if (successfulDateConversion)
+        {
+            errorLabel.setForeground(Color.green);
+            errorLabel.setText("Your appointment has been booked!");
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
